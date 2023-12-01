@@ -3,12 +3,12 @@ route:
 receivers:
     - name: 'devops/admin'
       email_configs:
-          - to: 'Bazarutyunyan@gmail.com'
-            from: 'alert@bazcorp.com'
+          - to: 'sergey.bityukov@bloomex.ca'
+            from: 'alert@bloomex.ca'
             require_tls: false
             #auth_username: 'alertmanager'
             #auth_password: 'password'
             #auth_secret: 'secret'
             #auth_identity: 'identity'
-            smarthost: ubuntuserver.vmware.local:25
+            smarthost: 172.10.10.5:25
             send_resolved: true

@@ -2,7 +2,7 @@ version: '3.7'
 services:
   prometheus:
     container_name: promet01
-    image: promet:compose
+    build: ./prometheus
     ports:
       - "83:9090"
     networks:
@@ -11,12 +11,12 @@ services:
     volumes:
       - type: volume
         source: prometheus_tsdb
-        target: /prometheus
+        target: /opt/prometheus
     restart: unless-stopped
 
   grafana:
     container_name: grafana01
-    image: grafana:compose
+    build: ./grafana
     ports:
       - "84:3000"
     networks:
@@ -25,14 +25,14 @@ services:
     volumes:
       - type: volume
         source: grafana_db
-        target: /var/lib/grafana
+        target: /opt/grafana
     depends_on:
       - prometheus
     restart: unless-stopped
 
   alertmanager:
     container_name: alertmanager01
-    image: alert:compose
+    build: ./alertmanager
     ports:
       - "85:9093"
     networks:
@@ -41,7 +41,7 @@ services:
     volumes:
       - type: volume
         source: alertmanager-data
-        target: /alertmanager
+        target: /opt/alertmanager
     depends_on:
       - prometheus
     restart: unless-stopped
@@ -50,7 +50,7 @@ services:
 
   postfix:
     container_name: postfix01
-    image: postfix:compose
+    build: ./postfix
     ports:
       - "25:25"
     networks:
@@ -60,7 +60,7 @@ services:
       - alertmanager
     restart: unless-stopped
     command:
-      - ' bazcorp.com'
+      - ' bloomex.ca'
 
 networks:
    monitoring:

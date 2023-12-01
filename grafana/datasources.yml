@@ -3,7 +3,7 @@ datasources:
   - name: 'Prometheus'
     type: 'prometheus'
     access: 'proxy'
-    url: http://ubuntuserver.vmware.local:83 # Prometheus address 
+    url: http://172.10.10.2:83 # Prometheus address 
     isDefault: true
     org_id: 1
     uid: "ZdMdVkv4k" # ID datasource ( without exectly that ID  default dash won't work) 
