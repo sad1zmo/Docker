@@ -11,9 +11,6 @@ COPY default_dash.yml /etc/grafana/provisioning/dashboards/
 # copy default dashboard
 COPY dash.json /var/lib/grafana/dashboards/
 
-#Mount PV for database and plugins
-VOLUME     [ "/var/lib/grafana" ]
-
 # Docker start 
 ENTRYPOINT ["/run.sh"]
 

@@ -11,9 +11,9 @@ RUN apt-get update \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt
 
 # install Prometheus 2.40
-RUN wget https://github.com/prometheus/prometheus/releases/download/v2.40.5/prometheus-2.40.5.linux-386.tar.gz \
- &&  tar xvf prometheus-2.40.5.linux-386.tar.gz && cp prometheus-2.40.5.linux-386/prometheus /usr/local/bin && cp prometheus-2.40.5.linux-386/promtool /usr/local/bin \
- && mkdir /etc/prometheus && cp -r prometheus-2.40.5.linux-386/consoles /etc/prometheus && cp -r prometheus-2.40.5.linux-386/console_libraries /etc/prometheus \
+RUN wget https://github.com/prometheus/prometheus/releases/download/v2.40.5/prometheus-2.40.5.linux-amd64.tar.gz \
+ &&  tar xvf prometheus-2.40.5.linux-amd64.tar.gz && cp prometheus-2.40.5.linux-amd64/prometheus /usr/local/bin && cp prometheus-2.40.5.linux-amd64/promtool /usr/local/bin \
+ && mkdir /etc/prometheus && cp -r prometheus-2.40.5.linux-amd64/consoles /etc/prometheus && cp -r prometheus-2.40.5.linux-amd64/console_libraries /etc/prometheus \
  && rm -r prometheus-2.40.5.linux*
 
 
@@ -29,7 +29,7 @@ WORKDIR /etc/prometheus
 RUN mkdir /prometheus
 
 # Open port
-expose 9090
+EXPOSE 9090
 
 # Docker start  & choose options
 ENTRYPOINT [ "/usr/local/bin/prometheus" ]

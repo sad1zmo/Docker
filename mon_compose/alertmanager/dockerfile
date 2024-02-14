@@ -14,10 +14,11 @@ RUN apt-get update \
 expose 9093
 
 # default workdir
-WORKDIR /etc/prometheus
+WORKDIR /etc/prometheus/alertmanager/
 
 # copy config
-COPY alertmanager.yml ./
+COPY alertmanager.yml .
 
 # docker start
 ENTRYPOINT [ "/bin/prometheus-alertmanager" ]
+CMD        [ "--config.file=/etc/prometheus/alertmanager/alertmanager.yml" ]
